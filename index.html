@@ -41,7 +41,7 @@
       font-size: 1.1em;
       box-sizing: border-box;
     }
-    button {
+    .btn {
       width: 100%;
       padding: 14px;
       font-size: 1.1em;
@@ -51,9 +51,25 @@
       color: #000;
       font-weight: bold;
       cursor: pointer;
+      margin-bottom: 10px;
     }
-    button:hover {
+    .btn:hover {
       background: #e6b800;
+    }
+    .btn-sair {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    .btn-sair:hover {
+      text-decoration: underline;
     }
     p {
       color: red;
@@ -67,7 +83,8 @@
     <h2>Login</h2>
     <input type="text" id="usuario" placeholder="Usuário">
     <input type="password" id="senha" placeholder="Senha">
-    <button onclick="fazerLogin()">Entrar</button>
+    <button class="btn" onclick="fazerLogin()">Entrar</button>
+    <button class="btn-sair" onclick="fechar()">Sair</button>
     <p id="erro-login"></p>
   </div>
 
@@ -81,6 +98,9 @@
       } else {
         erro.textContent = "Usuário ou senha incorretos!";
       }
+    }
+    function fechar() {
+      window.close();
     }
   </script>
 </body>

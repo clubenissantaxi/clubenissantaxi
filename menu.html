@@ -37,6 +37,25 @@
     .btn:hover {
       background: #e6b800;
     }
+    .btn-sair {
+      display: block;
+      width: 90%;
+      margin: 15px auto;
+      padding: 18px;
+      font-size: 1.1em;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .btn-sair:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -44,5 +63,12 @@
   <a href="https://clubenissantaxi.github.io/clubenissantaxi/problema_solucao.html" class="btn">📋 Problemas e Soluções</a>
   <button class="btn" onclick="alert('Página de Parceiros em desenvolvimento.')">🤝 Parceiros</button>
   <a href="https://www.nissan.com.br/servicos/manuais/kicks.html" target="_blank" class="btn">📘 Manual Kicks</a>
+  <button class="btn-sair" onclick="sair()">Sair</button>
+
+  <script>
+    function sair() {
+      window.location.href = "https://clubenissantaxi.github.io/clubenissantaxi/index.html";
+    }
+  </script>
 </body>
 </html>
