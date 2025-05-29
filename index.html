@@ -84,7 +84,7 @@
     <input type="text" id="usuario" placeholder="Usuário">
     <input type="password" id="senha" placeholder="Senha">
     <button class="btn" onclick="fazerLogin()">Entrar</button>
-    <button class="btn-sair" onclick="fechar()">Sair</button>
+    <button class="btn-sair" onclick="sair()">Sair</button>
     <p id="erro-login"></p>
   </div>
 
@@ -99,8 +99,8 @@
         erro.textContent = "Usuário ou senha incorretos!";
       }
     }
-    function fechar() {
-      window.close();
+    function sair() {
+      window.location.href = "https://www.google.com.br";
     }
   </script>
 </body>
