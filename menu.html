@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu - Projeto Táxi</title>
   <style>
+    /* Impedir seleção de texto */
     body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       font-family: Arial, sans-serif;
       background: #f0f0f0;
       margin: 0;
@@ -60,14 +65,29 @@
 </head>
 <body>
   <h1>Menu Principal</h1>
-  <a href="https://clubenissantaxi.github.io/clubenissantaxi/problema_solucao.html" class="btn">📋 Problemas e Soluções</a>
+  <a href="problema_solucao.html" class="btn">📋 Problemas e Soluções</a>
   <button class="btn" onclick="alert('Página de Parceiros em desenvolvimento.')">🤝 Parceiros</button>
   <a href="https://www.nissan.com.br/servicos/manuais/kicks.html" target="_blank" class="btn">📘 Manual Kicks</a>
-  <button class="btn-sair" onclick="sair()">Sair</button>
+  <button class="btn-sair" onclick="sair()">🚪 Sair</button>
 
   <script>
+    // Verificar token de login
+    if (localStorage.getItem('taxi_logged') !== 'true') {
+      window.location.href = 'index.html';
+    }
+    // Desabilitar botão direito do mouse
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    // Desabilitar teclas de inspeção
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+          (e.ctrlKey && (e.key.toLowerCase() === 'u' || (e.shiftKey && e.key.toLowerCase() === 'i')))) {
+        e.preventDefault();
+      }
+    });
+
     function sair() {
-      window.location.href = "https://clubenissantaxi.github.io/clubenissantaxi/index.html";
+      localStorage.removeItem('taxi_logged');
+      window.location.href = 'index.html';
     }
   </script>
 </body>

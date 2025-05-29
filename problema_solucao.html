@@ -7,6 +7,10 @@
   <title>Problemas e Soluções - Projeto Táxi</title>
   <style>
     body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       margin: 0;
@@ -37,7 +41,7 @@
     .btn-small:hover {
       background: #e6b800;
     }
-    .btn-listar, .btn-back, .btn-sair-inline {
+    .btn-back, .btn-sair-inline {
       display: inline-block;
       width: 45%;
       margin: 1.5%;
@@ -53,14 +57,13 @@
       cursor: pointer;
       box-sizing: border-box;
     }
-    .btn-listar:hover, .btn-back:hover, .btn-sair-inline:hover {
+    .btn-back:hover, .btn-sair-inline:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <h1>Problemas e Soluções</h1>
-  <!-- 10 botões padronizados de 45% de largura -->
   <button class="btn-small">Suspensão</button>
   <button class="btn-small">Câmbio</button>
   <button class="btn-small">Motor</button>
@@ -70,11 +73,26 @@
   <button class="btn-small">Interior</button>
   <button class="btn-small">GNV</button>
   <button class="btn-small">Outros</button>
-  <!-- Botão Listar Todos com fundo transparente e link relativo para dados.html -->
-  <a href="dados.html" class="btn-listar">Listar Todos</a>
+  <!-- Listar Todos em btn-small -->
+  <a href="dados.html" class="btn-small">Listar Todos</a>
 
-  <!-- Botões "Voltar" e "Sair" lado a lado -->
   <a href="menu.html" class="btn-back">↩️ Voltar</a>
   <a href="https://www.google.com.br" class="btn-sair-inline">🚪 Sair</a>
+
+  <script>
+    // Verificar token de login
+    if (localStorage.getItem('taxi_logged') !== 'true') {
+      window.location.href = 'index.html';
+    }
+    // Desabilitar botão direito
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    // Desabilitar teclas de inspeção
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+          (e.ctrlKey && (e.key.toLowerCase() === 'u' || (e.shiftKey && e.key.toLowerCase() === 'i')))) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>

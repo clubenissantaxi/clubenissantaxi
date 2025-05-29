@@ -89,17 +89,29 @@
   </div>
 
   <script>
+    // Desabilitar botão direito do mouse
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    // Desabilitar teclas de inspeção (F12, Ctrl+U, Ctrl+Shift+I)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+          (e.ctrlKey && (e.key.toLowerCase() === 'u' || (e.shiftKey && e.key.toLowerCase() === 'i')))) {
+        e.preventDefault();
+      }
+    });
+
     function fazerLogin() {
       const usuario = document.getElementById("usuario").value.toLowerCase();
       const senha = document.getElementById("senha").value;
       const erro = document.getElementById("erro-login");
       if (usuario === "taxi" && senha === "123") {
-        window.location.href = "https://clubenissantaxi.github.io/clubenissantaxi/menu.html";
+        localStorage.setItem('taxi_logged', 'true');
+        window.location.href = "menu.html";
       } else {
         erro.textContent = "Usuário ou senha incorretos!";
       }
     }
     function sair() {
+      localStorage.removeItem('taxi_logged');
       window.location.href = "https://www.google.com.br";
     }
   </script>

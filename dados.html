@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +7,10 @@
   <title>Relatos - Clube Nissan Táxi</title>
   <style>
     body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       padding: 16px;
@@ -217,7 +222,22 @@
     <p><span class="label">Solução:</span> <span class="solucao-nao">Não</span></p>
   </div>
 
-  <!-- Botão Voltar para Problemas e Soluções -->
-  <a href="https://clubenissantaxi.github.io/clubenissantaxi/problema_solucao.html" class="btn-back">↩️ Voltar</a>
+  <a href="problema_solucao.html" class="btn-back">↩️ Voltar</a>
+
+  <script>
+    // Verificar token de login
+    if (localStorage.getItem('taxi_logged') !== 'true') {
+      window.location.href = 'index.html';
+    }
+    // Desabilitar botão direito
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    // Desabilitar teclas de inspeção
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+          (e.ctrlKey && (e.key.toLowerCase() === 'u' || (e.shiftKey && e.key.toLowerCase() === 'i')))) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
